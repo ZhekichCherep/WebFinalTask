@@ -262,18 +262,16 @@ const CoffeeAllList = [
 
 const navKar = document.querySelector("#navKar");
 const boxCoffe = document.querySelector("#boxCoffee");
-const update = document.querySelector('.update'); // Наше окно order status
+const update = document.querySelector('.update'); 
 const menu = document.querySelector('.menu');
 const silka = document.querySelector('.OS');
 const brow = document.querySelector(".input-with-icon");
 const couCof = document.querySelector(".countOrder");
 const orderStatusVector = document.querySelector('.OrderStatusVector');
 
-// Загрузка списка заказов
 let listOrder = [];
 !localStorage.listOrder ? listOrder = [] : listOrder = JSON.parse(localStorage.getItem('listOrder')); 
 
-// count - сколько кофе заказали в OS
 const cou_Coff = () => {
   let k = 0;
   listOrder.forEach(lis => {
@@ -283,7 +281,6 @@ const cou_Coff = () => {
 }
 cou_Coff();
 
-// Отображение карт выбраного вида кофе
 const showCoffees = (
   coffOnePrice,
   coffTwoPrice,
@@ -323,7 +320,6 @@ const showCoffees = (
     </div>`;
 };
 
-// Отображение кофе
 const showAllCoffees = (j) => {
   let s = "";
 
@@ -345,7 +341,6 @@ const showAllCoffees = (j) => {
   boxCoffe.innerHTML = s;
 };
 
-// Навигационаая панель
 const navigatorCoffee = (item) => {
   if (item > 6){
     item = 0;
@@ -399,22 +394,19 @@ const navigatorCoffee = (item) => {
   navKar.innerHTML = s;
 };
 
-// Добавить кофе в заказ
-const vibor = (coffName, coffPrice, coffIm) => { /*После нажатия на купить кофэ*/
-  console.log(coffName); // Проверка на передачу
+const vibor = (coffName, coffPrice, coffIm) => {
+  console.log(coffName);
   console.log(coffPrice);
   console.log(coffIm);
-  window.open("CoffeeBuy.html","_self") // Ссылка на заказывание кофе
-
-  // Сохранение данны об заказаном кофе
+  window.open("CoffeeBuy.html","_self") 
+  
   localStorage.setItem('PossibleOrder', JSON.stringify({Name: `${coffName}`, Price: coffPrice, Im: `${coffIm}`}));
 };
 
-showAllCoffees(0); // Метод который выдает сейчас пользователю на выбор черный кофе
-navigatorCoffee(0); // Отображает навигационную панель во 2 формате
+showAllCoffees(0);
+navigatorCoffee(0); 
 
-// Выбор кофе по поиску
-document.addEventListener('keydown', function(event){ /*Если пользователь ввел Enter*/
+document.addEventListener('keydown', function(event){ 
   if (event.key === 'Enter'){
     let check = false;
     let s = "";
@@ -439,11 +431,10 @@ document.addEventListener('keydown', function(event){ /*Если пользов�
     if (!check){
       alert("Извините, но в нашем магазине нету такого кофе");
     }
-    (document.querySelector(".input-with-icon")).value = ""; // Очищаем input
+    (document.querySelector(".input-with-icon")).value = ""; 
   }
 })
 
-// Открытие формы Order Status и Реализация добавления кофе в список заказов 
 silka.addEventListener("click", () => {   
   ProzrachnotOnBody(true);
   updateTask();
@@ -484,7 +475,7 @@ const updateTask = () => {
   })
   savedOrder.innerHTML = s2;
 
-  let zena = 0; // Расчет прибыли
+  let zena = 0; 
   listOrder.forEach(lis => {
     zena += lis[3];
   })
@@ -498,7 +489,7 @@ const closeform = () => {
   ProzrachnotOnBody(false);
 };  
 
-const ProzrachnotOnBody = (item) => { // Делаем прозрачный экран/Делаем не прозрачный экран
+const ProzrachnotOnBody = (item) => { 
   const header = document.querySelector('header');
   const main = document.querySelector('main');
   const nav = document.querySelector('nav');
@@ -514,7 +505,6 @@ const ProzrachnotOnBody = (item) => { // Делаем прозрачный эк�
   }
 } 
 
-// Бургер меню
 function handleResize() {
   const width = window.innerWidth;
   if (width >= 769){
@@ -533,7 +523,6 @@ function handleResize() {
   }
 }
 window.addEventListener('resize', handleResize);
-// Получаем ширину экрана при обновлении страницы
 handleResize();
 
 const openMenu = () => {
