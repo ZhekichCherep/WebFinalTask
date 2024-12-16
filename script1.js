@@ -269,8 +269,10 @@ const brow = document.querySelector(".input-with-icon");
 const couCof = document.querySelector(".countOrder");
 const orderStatusVector = document.querySelector('.OrderStatusVector');
 
+
 let listOrder = [];
 !localStorage.listOrder ? listOrder = [] : listOrder = JSON.parse(localStorage.getItem('listOrder')); 
+
 
 const cou_Coff = () => {
   let k = 0;
@@ -280,6 +282,7 @@ const cou_Coff = () => {
   couCof.innerHTML = `<p>${k}</p>`;
 }
 cou_Coff();
+
 
 const showCoffees = (
   coffOnePrice,
@@ -320,6 +323,7 @@ const showCoffees = (
     </div>`;
 };
 
+
 const showAllCoffees = (j) => {
   let s = "";
 
@@ -340,6 +344,7 @@ const showAllCoffees = (j) => {
   }
   boxCoffe.innerHTML = s;
 };
+
 
 const navigatorCoffee = (item) => {
   if (item > 6){
@@ -394,17 +399,20 @@ const navigatorCoffee = (item) => {
   navKar.innerHTML = s;
 };
 
-const vibor = (coffName, coffPrice, coffIm) => {
-  console.log(coffName);
+
+const vibor = (coffName, coffPrice, coffIm) => { 
+  console.log(coffName); 
   console.log(coffPrice);
   console.log(coffIm);
   window.open("CoffeeBuy.html","_self") 
+
   
   localStorage.setItem('PossibleOrder', JSON.stringify({Name: `${coffName}`, Price: coffPrice, Im: `${coffIm}`}));
 };
 
-showAllCoffees(0);
+showAllCoffees(0); 
 navigatorCoffee(0); 
+
 
 document.addEventListener('keydown', function(event){ 
   if (event.key === 'Enter'){
@@ -434,6 +442,7 @@ document.addEventListener('keydown', function(event){
     (document.querySelector(".input-with-icon")).value = ""; 
   }
 })
+
 
 silka.addEventListener("click", () => {   
   ProzrachnotOnBody(true);
@@ -505,6 +514,7 @@ const ProzrachnotOnBody = (item) => {
   }
 } 
 
+
 function handleResize() {
   const width = window.innerWidth;
   if (width >= 769){
@@ -523,6 +533,7 @@ function handleResize() {
   }
 }
 window.addEventListener('resize', handleResize);
+
 handleResize();
 
 const openMenu = () => {
